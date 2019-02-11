@@ -19,6 +19,11 @@ SET(CORES
   src/luv.cpp
   src/lab.cpp
   src/xyz.cpp
+  src/cmyk.cpp
+  src/ryb.cpp
+  src/hsv.cpp
+  src/hsl.cpp
+  src/hcl.cpp
   src/colorspace.cpp)
 
 if(NONAMESPACE)
