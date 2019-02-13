@@ -78,13 +78,13 @@ XYZ & XYZ::setRgba64(const RGBA64 & rgba)
 
 XYZ & XYZ::setDouble(const DoubleRGBA & rgba)
 {
-  double R = Gamma( rgba . R )                         ;
-  double G = Gamma( rgba . G )                         ;
-  double B = Gamma( rgba . B )                         ;
-  X = ( 0.4124 * R ) + ( 0.3576 * G ) + ( 0.1805 * B ) ;
-  Y = ( 0.2126 * R ) + ( 0.7152 * G ) + ( 0.0722 * B ) ;
-  Z = ( 0.0193 * R ) + ( 0.1192 * G ) + ( 0.9505 * B ) ;
-  return (*this)                                       ;
+  double R = Gamma( rgba . R )                               ;
+  double G = Gamma( rgba . G )                               ;
+  double B = Gamma( rgba . B )                               ;
+  X = ( 0.412453 * R ) + ( 0.357580 * G ) + ( 0.180423 * B ) ;
+  Y = ( 0.212671 * R ) + ( 0.715160 * G ) + ( 0.072169 * B ) ;
+  Z = ( 0.019334 * R ) + ( 0.119193 * G ) + ( 0.950227 * B ) ;
+  return (*this)                                             ;
 }
 
 RGBA XYZ::toRGBA(void) const
@@ -101,18 +101,18 @@ RGBA64 XYZ::toRGBA64(void) const
 
 DoubleRGBA XYZ::toDouble(void) const
 {
-  DoubleRGBA D                                                ;
-  double     R                                                ;
-  double     G                                                ;
-  double     B                                                ;
-  R     = (  3.2406 * X ) + ( -1.5372 * Y ) + ( -0.4986 * Z ) ;
-  G     = ( -0.9689 * X ) + (  1.8758 * Y ) + (  0.0415 * Z ) ;
-  B     = (  0.0557 * X ) + ( -0.2040 * Y ) + (  1.0570 * Z ) ;
-  D . R = invertGamma ( R )                                   ;
-  D . G = invertGamma ( G )                                   ;
-  D . B = invertGamma ( B )                                   ;
-  D . A = 1.0                                                 ;
-  return D                                                    ;
+  DoubleRGBA D                                                      ;
+  double     R                                                      ;
+  double     G                                                      ;
+  double     B                                                      ;
+  R     = (  3.240479 * X ) + ( -1.537150 * Y ) + ( -0.498535 * Z ) ;
+  G     = ( -0.969256 * X ) + (  1.875992 * Y ) + (  0.041556 * Z ) ;
+  B     = (  0.055648 * X ) + ( -0.204043 * Y ) + (  1.057311 * Z ) ;
+  D . R = invertGamma ( R )                                         ;
+  D . G = invertGamma ( G )                                         ;
+  D . B = invertGamma ( B )                                         ;
+  D . A = 1.0                                                       ;
+  return D                                                          ;
 }
 
 double XYZ::Gamma(double v) const
